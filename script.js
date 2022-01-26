@@ -55,18 +55,19 @@ btnRoll.addEventListener('click', function () {
 });
 
 btnHold.addEventListener('click', function () {
-    if(playing){
-    // add current score to the score of active player
-    finalScores[activePlayer] += currentScore;
-    document.getElementById(`score--${activePlayer}`).textContent = finalScores[activePlayer];
+    if (playing) {
+        // add current score to the score of active player
+        finalScores[activePlayer] += currentScore;
+        document.getElementById(`score--${activePlayer}`).textContent = finalScores[activePlayer];
 
-    // check if score is at least 100
-    if (finalScores[activePlayer] >= 20) {
-        playing = false;
-        document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
-        document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
-    } else {
-        switchPlayer;
+        // check if score is at least 100
+        if (finalScores[activePlayer] >= 100) {
+            playing = false;
+            diceEl.classList.add('hidden');
+            document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
+            document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
+        } else {
+            switchPlayer;
+        }
     }
-}
 });
